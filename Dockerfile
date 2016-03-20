@@ -1,5 +1,8 @@
 FROM otasys/elk-redis
 
+WORKDIR /opt/logstash
+RUN bin/plugin install contrib
+
 RUN apt-get update -qq \
  && apt-get install -qqy python-pip
 RUN pip install docopt \
