@@ -83,9 +83,9 @@ def create_file_pair(input_root, output_root, filename):
     input_file_path = os.path.join(input_root, filename)
     output_file_path = os.path.join(output_root, filename)
     if not os.access(input_file_path, os.R_OK):
-        raise RuntimeError('Input file not readable: {}', input_file_path)
+        raise RuntimeError('Input file {} not readable', input_file_path)
     if not os.access(output_root, os.W_OK):
-        raise RuntimeError('Output dir not writable: {}', output_root)
+        raise RuntimeError('Output dir {} not writable', output_root)
     return input_file_path, output_file_path
 
 
@@ -107,7 +107,7 @@ def log_write_loop(input_file, output_file, interval, random_variation, no_loop)
         return
     print('Starting write loop for file {}'.format(output_file))
     while True:
-        with open(input_file) as i, open(output_file, 'w') as o:
+        with open(input_file) as i, open(output_file, 'a') as o:
             for line in i:
                 print('Writing log entry {} -> {}'.format(input_file, output_file))
                 o.write(line)
