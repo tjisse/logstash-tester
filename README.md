@@ -6,7 +6,7 @@ Provide:
 - a bunch of log files
 
 Receive:
-- a Kibana dashboard on http://<hostname>:9292 on which your log events are being replayed
+- a Kibana dashboard on http://localhost:9292 on which your log events are being replayed
 
 Example:
 
