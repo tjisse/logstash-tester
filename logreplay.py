@@ -111,6 +111,7 @@ def log_write_loop(input_file, output_file, interval, random_variation, no_loop)
             for line in i:
                 print('Writing log entry {} -> {}'.format(input_file, output_file))
                 o.write(line)
+                o.flush()
                 sleepy_time = calc_sleepy_time(interval, random_variation)
                 yield From(trollius.sleep(sleepy_time))
             if no_loop:
