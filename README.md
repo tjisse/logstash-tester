@@ -1,13 +1,13 @@
 # logstash-tester
-Container for testing Logstash configuration with replaying logs
+ELK+Redis container that can replay log events from a bunch of files in a random way for the purpose of testing Logstash configurations
 
 Provide:
 - a Logstash configuration
 - a bunch of log files
 
 Receive:
-- a Kibana view of your log events being replayed
+- a Kibana dashboard on http://<hostname>:9292 on which your log events are being replayed
 
 Example:
 
-`docker run --name logstash-tester -p 9292:9292 -p 9200:9200 -v /etc/logstash/conf.d:/etc/logstash/conf.d:ro -v /var/log/<log-dir>:/tmp/logreplay-input:ro --add-host <redis_host_used_in_config>:127.0.0.1 -it tjissevdwal/logstash-tester`
+`docker run --name logstash-tester -p 9292:9292 -p 9200:9200 -v /etc/logstash/conf.d:/etc/logstash/conf.d:ro -v /var/log/<log_dir>:/tmp/logreplay-input:ro --add-host <redis_host_used_in_config>:127.0.0.1 -it tjisse/logstash-tester`
